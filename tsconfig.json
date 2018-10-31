@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "jsx": "react",
+    "jsxFactory": "h",
+    "lib": ["dom", "es2015" , "es2016"],
+    "strictNullChecks": false,
+    "noImplicitAny": false
+  },
+  "include": [
+    "src/**/*.ts*"
+  ]
+}
