@@ -62,6 +62,7 @@ const options = {
   },
   resolve: {
     alias: alias,
+    extensions: ['.ts', '.tsx', '.js'],
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin({
@@ -104,7 +105,7 @@ const options = {
 };
 
 if (env.NODE_ENV === 'development') {
-  options.devtool = false;
+  options.devtool = 'sourcemap';
 }
 
 module.exports = options;

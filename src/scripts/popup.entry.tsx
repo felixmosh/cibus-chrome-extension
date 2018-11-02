@@ -1,10 +1,12 @@
-import {Component, h, render} from 'preact';
+import {h, render} from 'preact';
+import {Provider} from 'preact-redux';
+import {applyMiddleware, createStore} from 'redux';
+import thunk from 'redux-thunk';
+import {App} from './popup/App';
+import {appReducer} from './popup/store/reducers';
 
-class Clock extends Component {
-  public render() {
-    const time = new Date().toLocaleTimeString();
-    return <span>{time}</span>;
-  }
-}
+const store = createStore(appReducer, applyMiddleware(thunk));
 
-render(<Clock/>, document.getElementById('root'));
+render(<Provider store={store}>
+  <App/>
+</Provider>, document.getElementById('root'));
