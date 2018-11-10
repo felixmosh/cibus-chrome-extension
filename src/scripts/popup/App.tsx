@@ -1,26 +1,47 @@
-import {Component, h} from 'preact';
-import {connect} from 'preact-redux';
-import {IReduxProps} from '../../types/types';
-import {login} from './store/actions/user';
+import { Component, h } from 'preact';
+import { connect } from 'preact-redux';
+import { IAppState, IReduxProps } from '../../types/types';
+import { LoginForm } from './components/LoginForm';
+import { Stats } from './components/Stats';
+import { login, restoreLogin } from './store/actions/user';
 
-interface IAppProps extends IReduxProps {
-  dispatch?: (action: any) => void;
-}
+interface IAppProps extends IReduxProps, Partial<IAppState> {}
 
-@connect((s: any) => s)
+@connect((s: IAppState) => s)
 export class App extends Component<IAppProps, {}> {
+  constructor(props) {
+    super(props);
+    this.onLogin = this.onLogin.bind(this);
+  }
+
   public componentWillMount() {
-    const {dispatch} = this.props;
-    dispatch(login());
+    const { dispatch } = this.props;
+    dispatch(restoreLogin());
   }
 
   public render() {
-    return <main>
-      <section>
+    return <main>{this.renderContent()}</main>;
+  }
 
-        sdfdsf
+  private renderContent() {
+    const { user } = this.props;
+    if (user.isRestoreLoginInProgress) {
+      return <div>טוען...</div>;
+    } else {
+      if (!this.props.user.isLoginInProgress && !!this.props.user.token) {
+        return <Stats />;
+      } else {
+        return (
+          <LoginForm
+            onLogin={this.onLogin}
+            errorMessage={this.props.user.loginError}
+          />
+        );
+      }
+    }
+  }
 
-      </section>
-    </main>;
+  private onLogin(username: string, password: string) {
+    this.props.dispatch(login(username, password));
   }
 }

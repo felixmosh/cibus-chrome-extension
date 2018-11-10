@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://www.mysodexo.co.il/';
+export const BASE_URL = 'https://mobile.mysodexo.co.il/mobile';

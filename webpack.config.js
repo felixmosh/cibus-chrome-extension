@@ -84,6 +84,9 @@ const options = {
           ...JSON.parse(content.toString()),
         }));
       },
+    }, {
+      from: 'src/img/',
+      to: 'img/'
     }]),
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'popup.html'),
