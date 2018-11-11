@@ -4,6 +4,7 @@ import {applyMiddleware, createStore} from 'redux';
 import thunk from 'redux-thunk';
 import {App} from './popup/App';
 import {appReducer} from './popup/store/reducers';
+import './popup.scss';
 
 const store = createStore(appReducer, applyMiddleware(thunk));
 

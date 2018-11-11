@@ -1,0 +1,56 @@
+.LoginForm {
+  display: block;
+  padding: 40px 10px;
+}
+
+.formList {
+  $input-border-color: #dfdfdf;
+  $button-bg: #2a295c;
+  $danger-color: #f24c62;
+
+  display: block;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-weight: normal;
+
+  > li + li {
+    margin-top: 10px;
+  }
+
+  input {
+    text-align: start;
+    height: 30px;
+    padding: 0 5px;
+    width: 100%;
+    font: inherit;
+    outline: none;
+    border: 1px solid $input-border-color;
+
+    &:focus {
+      border-color: darken($input-border-color, 20%);
+    }
+  }
+
+  button {
+    border: 0;
+    outline: 0;
+    height: 28px;
+    color: #ffffff;
+    background: $button-bg;
+    border-radius: 3px;
+    vertical-align: middle;
+    font: inherit;
+    font-weight: bold;
+    padding: 0 35px;
+    cursor: pointer;
+
+    &:hover {
+      background: lighten($button-bg, 10%);
+    }
+  }
+
+  .errorMessage {
+    color: $danger-color;
+  }
+}
