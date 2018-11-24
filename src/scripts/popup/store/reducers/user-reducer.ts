@@ -1,4 +1,5 @@
 import { UserActions } from '../actions/user';
+import {IUserDetails} from '../../../../types/types';
 
 const initialState = {
   isLoginInProgress: false,
@@ -6,15 +7,10 @@ const initialState = {
   loginError: ''
 };
 
-export interface IUserState {
+export interface IUserState extends IUserDetails {
   isLoginInProgress: boolean;
   isRestoreLoginInProgress: boolean;
   loginError: string;
-  token: string;
-  id: number;
-  firstname: string;
-  lastname: string;
-  company_id: number;
 }
 
 export function userReducer(state: Partial<IUserState> = initialState, action) {

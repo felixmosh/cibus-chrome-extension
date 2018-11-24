@@ -54,7 +54,9 @@ export class LoginForm extends Component<ILoginFormProps, ILoginFormState> {
           </li>
           {this.state.hasError && this.state.isSubmitted && (
             <li>
-              <label className={s.errorMessage} for={this.state.hasError}>חובה למלא את כל השדות</label>
+              <label className={s.errorMessage} for={this.state.hasError}>
+                חובה למלא את כל השדות
+              </label>
             </li>
           )}
           {this.props.errorMessage && (

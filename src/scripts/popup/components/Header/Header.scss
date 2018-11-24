@@ -1,13 +1,15 @@
+@import '../../variables';
+
 .header {
   height: 35px;
   font-size: 20px;
   position: relative;
   padding-bottom: 10px;
-  margin-bottom: 10px;
+  grid-area: header;
 
   &:after {
     content: '';
-    background: linear-gradient(90deg, #cc1480 21%, #d92776 22%, #d92776 40%, #e6396c 41%, #e6396c 59%, #f24c62 60%, #f24c62 78%, #ff5e58 79%), #cc1480;
+    background: $cibus-brand-line;
     height: 4px;
     display: block;
     position: absolute;

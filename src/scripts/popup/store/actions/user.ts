@@ -1,4 +1,4 @@
-import { cibusApi, ICibusLoginData } from '../../services/api';
+import { cibusApi } from '../../services/api';
 import { chromeService } from '../../services/chrome';
 
 export const UserActions = {

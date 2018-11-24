@@ -1,3 +1,4 @@
+@import 'popup/variables';
 html {
   direction: rtl;
 }
@@ -28,6 +29,6 @@ body {
     right: -10px;
     height: 15px;
     opacity: .5;
-    background: linear-gradient(90deg, #cc1480 21%, #d92776 22%, #d92776 40%, #e6396c 41%, #e6396c 59%, #f24c62 60%, #f24c62 78%, #ff5e58 79%), #cc1480;
+    background: $cibus-brand-line;
   }
 }

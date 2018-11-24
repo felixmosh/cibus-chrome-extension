@@ -1,0 +1,38 @@
+.tooltipContent {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: rgba(0,0,0,.8);
+  padding: 4px 10px;
+  border-radius: 3px;
+  position: relative;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
+
+  &.withCaret:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 5px solid transparent;
+    border-top-color: rgba(255, 255, 255, 0.9);
+  }
+
+  > ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  > time {
+    opacity: .6;
+    margin: 5px 0;
+    display: block;
+    text-align: center;
+  }
+
+  > strong {
+    display: block;
+    text-align: center;
+  }
+}
