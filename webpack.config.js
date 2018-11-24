@@ -10,7 +10,6 @@ const webpack = require('webpack'),
 
 // load the secrets
 const alias = {};
-
 const secretsPath = path.join(__dirname, 'secrets.' + env.NODE_ENV + '.js');
 
 const fileExtensions = [

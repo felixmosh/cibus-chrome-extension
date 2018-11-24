@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "A Chrome extionsion to manage your Cibus expenses.",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "NODE_ENV=production webpack --mode production",
     "start": "webpack -w --mode development"
   },
   "devDependencies": {
