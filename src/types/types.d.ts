@@ -12,7 +12,7 @@ export interface IAction {
 }
 
 export interface IAppState {
-  user: Partial<IUserState>;
+  user: IUserState;
   stats: IStatsState;
 }
 

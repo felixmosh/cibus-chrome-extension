@@ -29,12 +29,23 @@ export function statsReducer(
         orders: calculateOrders(action.value, state),
         totalExpense: calculateTotalExpense(action.value)
       };
+    case StatsActions.UPDATE_MONTH_BY:
+      const newDate = new Date(
+        state.fromDate.getFullYear(),
+        state.fromDate.getMonth() + action.value,
+        state.fromDate.getDate()
+      );
+      return {
+        ...state,
+        fromDate: getFirstDayOfMonth(newDate),
+        toDate: getLastDayOfMonth(newDate)
+      };
     default:
       return state;
   }
 }
 
-function getFirstDayOfMonth(date: Date): Date {
+export function getFirstDayOfMonth(date: Date): Date {
   const y = date.getFullYear();
   const m = date.getMonth();
   return new Date(y, m, 1);
@@ -51,7 +62,7 @@ function calculateTotalExpense(orders: IOrder[]): number {
 }
 
 export function getDateKey(date) {
-  return date.toLocaleDateString('he-IL', {day: '2-digit', month: '2-digit'});
+  return date.toLocaleDateString('he-IL', { day: '2-digit', month: '2-digit' });
 }
 
 function calculateOrders(orders: IOrder[], state: IStatsState) {

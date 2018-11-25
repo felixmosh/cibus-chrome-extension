@@ -9,7 +9,7 @@ import {
   LabelList,
   ResponsiveContainer
 } from 'precharts';
-import {formatPrice, IStatsState} from '../../store/reducers/stats-reducer';
+import { formatPrice, IStatsState } from '../../store/reducers/stats-reducer';
 import { TooltipContent } from '../TooltipContent/TooltipContent';
 
 export const Balance = ({ stats }: { stats: IStatsState }) => {
@@ -22,12 +22,12 @@ export const Balance = ({ stats }: { stats: IStatsState }) => {
   let color2;
 
   if (overdraft >= 0) {
-    bar1 = stats.totalExpense;
-    bar2 = overdraft;
-    label1 = '';
-    label2 = '';
-    color1 = '#3db241';
-    color2 = '#dddddd';
+    bar1 = overdraft;
+    bar2 = stats.totalExpense;
+    label1 = 'יתרה';
+    label2 = 'מסובסד';
+    color1 = '#bababa';
+    color2 = '#3db241';
   } else {
     bar1 = overdraft * -1;
     bar2 = stats.coveredByCompany;
@@ -52,11 +52,14 @@ export const Balance = ({ stats }: { stats: IStatsState }) => {
               <TooltipContent withCaret>
                 <ol>
                   {payload.map((item, index) => (
-                    <li key={item.dataKey} style={{ color: item.color }}>
+                    <li
+                      key={item.dataKey}
+                      style={{
+                        color: item.color === '#bababa' ? 'rgba(0,0,0,0.5)' : item.color
+                      }}
+                    >
                       {`${item.payload[`label${index + 1}`]}: `}
-                      <strong>
-                        {formatPrice(item.value)}
-                      </strong>
+                      <strong>{formatPrice(item.value)}</strong>
                     </li>
                   ))}
                 </ol>

@@ -1,0 +1,21 @@
+.monthNavigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+  color: rgba(42, 41, 92, 0.85);
+
+  > span {
+    font-size: 1.17em;
+  }
+}
+
+.button {
+  color: inherit;
+  outline: none;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.5em;
+}
