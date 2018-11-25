@@ -12,7 +12,8 @@
     ],
     "trailing-comma": false,
     "object-literal-sort-keys": false,
-    "ordered-imports": false
+    "ordered-imports": false,
+    "semicolon": [true, "always", "ignore-bound-class-methods"]
   },
   "rulesDirectory": []
 }

@@ -15,16 +15,6 @@ export class Stats extends Component<IStatsProps> {
     dispatch(getStats(stats.fromDate, stats.toDate, user as IUserDetails));
   }
 
-  private onClickPrev = () => {
-    const { dispatch } = this.props;
-    dispatch(changeMonthBy(-1));
-  };
-
-  private onClickNext = () => {
-    const { dispatch } = this.props;
-    dispatch(changeMonthBy(1));
-  };
-
   public render() {
     const { stats } = this.props;
     return (
@@ -39,4 +29,14 @@ export class Stats extends Component<IStatsProps> {
       </div>
     );
   }
+
+  private onClickPrev = () => {
+    const { dispatch } = this.props;
+    dispatch(changeMonthBy(-1));
+  };
+
+  private onClickNext = () => {
+    const { dispatch } = this.props;
+    dispatch(changeMonthBy(1));
+  };
 }
