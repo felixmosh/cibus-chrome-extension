@@ -88,9 +88,13 @@ const options = {
     extensions: ['.ts', '.tsx', '.js']
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin({
-      tslint: true
-    }),
+    ...(env.NODE_ENV === 'development'
+      ? [
+          new ForkTsCheckerWebpackPlugin({
+            tslint: true
+          })
+        ]
+      : []),
     // clean the build folder
     new CleanWebpackPlugin(['build']),
     // expose and write the allowed env vars on the compiled bundle

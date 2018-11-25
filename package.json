@@ -1,10 +1,11 @@
 {
   "name": "cibus-chrome-extension",
-  "version": "0.1.0",
-  "description": "A Chrome extionsion to manage your Cibus expenses.",
+  "version": "1.0.0",
+  "description": "A Chrome extension to manage your Cibus expenses.",
   "scripts": {
     "build": "NODE_ENV=production webpack --mode production",
-    "start": "webpack -w --mode development"
+    "start": "webpack -w --mode development",
+    "pack": "gulp package"
   },
   "devDependencies": {
     "@types/chrome": "0.0.75",
@@ -14,6 +15,8 @@
     "file-loader": "^2.0.0",
     "fork-ts-checker-webpack-plugin": "^0.4.14",
     "fs-extra": "^7.0.0",
+    "gulp": "^3.9.1",
+    "gulp-zip": "^4.2.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "3.2.0",
     "node-sass": "^4.10.0",
