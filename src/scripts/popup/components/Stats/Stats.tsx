@@ -8,7 +8,7 @@ import { MonthNavigation } from '../MonthNavigation/MonthNavigation';
 
 interface IStatsProps extends IReduxProps, Partial<IAppState> {}
 
-@connect((s: IAppState) => s)
+@(connect as any)((s: IAppState) => s)
 export class Stats extends Component<IStatsProps> {
   public componentWillMount() {
     const { user, stats, dispatch } = this.props;
