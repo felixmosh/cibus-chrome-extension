@@ -30,13 +30,13 @@ export const Header = ({ firstname = '', lastname = '' }: IHeaderProps) => {
                   rx="8.19"
                   fill="none"
                   stroke="#666"
-                  stroke-miterlimit="10"
+                  strokeMiterlimit="10"
                 />
                 <path
                   fill="none"
                   stroke="#666"
-                  stroke-miterlimit="10"
-                  stroke-width="2"
+                  strokeMiterlimit="10"
+                  strokeWidth="2"
                   d="M27.5 9.5h23M27.5 14.5h23M28.5 19.5h22M31.5 24.5h19"
                 />
                 <circle cx="18" cy="11" r="5.5" fill="#666" />

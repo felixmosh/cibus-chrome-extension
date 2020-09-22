@@ -1,5 +1,5 @@
 import { UserActions } from '../actions/user';
-import {IUserDetails} from '../../../../types/types';
+import { IUserDetails } from '../../../../types/types';
 
 const initialState = {
   isLoginInProgress: false,

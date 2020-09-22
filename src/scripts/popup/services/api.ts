@@ -77,12 +77,15 @@ class CibusApi {
       orders: response.list.map((order) => ({
         date: convertCibusDateToDate(order.date),
         price: order.price,
-        restaurantName: order.rest_name.split(' - ').reverse().pop()
+        restaurantName: order.rest_name
+          .split(' - ')
+          .reverse()
+          .pop()
       }))
     }));
   }
 
-  private post<P>(data: any, authToken: string = ''): Promise<P> {
+  private post<P>(data: any, authToken = ''): Promise<P> {
     return fetch(`${BASE_URL}/main.py`, {
       method: 'post',
       body: JSON.stringify(data),
@@ -98,9 +101,8 @@ class CibusApi {
       .then((response) => {
         if (response.code === 0) {
           return response;
-        } else {
-          return Promise.reject(response.msg);
         }
+        return Promise.reject(response.msg);
       });
   }
 }

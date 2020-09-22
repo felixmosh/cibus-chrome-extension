@@ -9,14 +9,14 @@ import * as styles from './App.scss';
 
 interface IAppProps extends IReduxProps, Partial<IAppState> {}
 
-@connect((s: IAppState) => s)
-export class App extends Component<IAppProps, {}> {
+@((connect() as any)((s: IAppState) => s))
+export class App extends Component<IAppProps> {
   constructor(props) {
     super(props);
     this.onLogin = this.onLogin.bind(this);
   }
 
-  public componentWillMount() {
+  public componentDidMount() {
     const { dispatch } = this.props;
     dispatch(restoreLogin());
   }
@@ -25,9 +25,7 @@ export class App extends Component<IAppProps, {}> {
     if (this.props.user.company_id !== previousProps.user.company_id) {
       document.body.style.setProperty(
         '--company-logo',
-        `url(https://www.mysodexo.co.il/images/company_logo/CompLogo${
-          this.props.user.company_id
-        }_1.jpg)`
+        `url(https://www.mysodexo.co.il/images/company_logo/CompLogo${this.props.user.company_id}_1.jpg)`
       );
     }
   }
@@ -46,18 +44,18 @@ export class App extends Component<IAppProps, {}> {
     const { user } = this.props;
     if (user.isRestoreLoginInProgress) {
       return <div>טוען...</div>;
-    } else {
-      if (!this.props.user.isLoginInProgress && !!this.props.user.token) {
-        return <Stats />;
-      } else {
-        return (
-          <LoginForm
-            onLogin={this.onLogin}
-            errorMessage={this.props.user.loginError}
-          />
-        );
-      }
     }
+
+    if (!this.props.user.isLoginInProgress && !!this.props.user.token) {
+      return <Stats />;
+    }
+
+    return (
+      <LoginForm
+        onLogin={this.onLogin}
+        errorMessage={this.props.user.loginError}
+      />
+    );
   }
 
   private onLogin(username: string, password: string) {

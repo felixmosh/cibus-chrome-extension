@@ -6,7 +6,6 @@ import {
   YAxis,
   Tooltip,
   Bar,
-  LabelList,
   ResponsiveContainer
 } from 'precharts';
 import { formatPrice, IStatsState } from '../../store/reducers/stats-reducer';
@@ -55,7 +54,10 @@ export const Balance = ({ stats }: { stats: IStatsState }) => {
                     <li
                       key={item.dataKey}
                       style={{
-                        color: item.color === '#bababa' ? 'rgba(0,0,0,0.5)' : item.color
+                        color:
+                          item.color === '#bababa'
+                            ? 'rgba(0,0,0,0.5)'
+                            : item.color
                       }}
                     >
                       {`${item.payload[`label${index + 1}`]}: `}
