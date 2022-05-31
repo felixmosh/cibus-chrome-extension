@@ -29,6 +29,7 @@ module.exports = {
     '@typescript-eslint/ban-ts-comment': 0,
     '@typescript-eslint/ban-ts-ignore': 0,
     '@typescript-eslint/camelcase': 0,
+    'jest/no-deprecated-functions': 0,
     '@typescript-eslint/no-unused-vars': [
       'error',
       {

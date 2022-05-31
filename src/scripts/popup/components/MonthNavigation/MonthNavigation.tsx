@@ -12,7 +12,7 @@ const currentMonth = new Date().getMonth();
 export const MonthNavigation = ({
   currentDate,
   onClickNext,
-  onClickPrev
+  onClickPrev,
 }: IMonthNavigationProps) => {
   const isNextDisabled = currentDate.getMonth() >= currentMonth;
   return (
@@ -21,11 +21,7 @@ export const MonthNavigation = ({
         ❮
       </button>
       <span>{currentDate.toLocaleDateString('he-IL', { month: 'long' })}</span>
-      <button
-        onClick={onClickNext}
-        className={styles.button}
-        disabled={isNextDisabled}
-      >
+      <button onClick={onClickNext} className={styles.button} disabled={isNextDisabled}>
         ❯
       </button>
     </nav>

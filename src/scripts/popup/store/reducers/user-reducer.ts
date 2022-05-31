@@ -1,10 +1,10 @@
-import { UserActions } from '../actions/user';
 import { IUserDetails } from '../../../../types/types';
+import { UserActions } from '../actions/user';
 
 const initialState = {
   isLoginInProgress: false,
   isRestoreLoginInProgress: false,
-  loginError: ''
+  loginError: '',
 };
 
 export interface IUserState extends IUserDetails {

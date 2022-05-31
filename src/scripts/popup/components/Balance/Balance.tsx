@@ -1,12 +1,12 @@
 import { h } from 'preact';
 import {
+  Bar,
   BarChart,
   CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  Tooltip,
-  Bar,
-  ResponsiveContainer
 } from 'precharts';
 import { formatPrice, IStatsState } from '../../store/reducers/stats-reducer';
 import { TooltipContent } from '../TooltipContent/TooltipContent';
@@ -54,10 +54,7 @@ export const Balance = ({ stats }: { stats: IStatsState }) => {
                     <li
                       key={item.dataKey}
                       style={{
-                        color:
-                          item.color === '#bababa'
-                            ? 'rgba(0,0,0,0.5)'
-                            : item.color
+                        color: item.color === '#bababa' ? 'rgba(0,0,0,0.5)' : item.color,
                       }}
                     >
                       {`${item.payload[`label${index + 1}`]}: `}

@@ -1,26 +1,22 @@
 import { h } from 'preact';
 import {
-  BarChart,
   Bar,
+  BarChart,
+  CartesianGrid,
+  ReferenceLine,
+  ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  ResponsiveContainer,
-  ReferenceLine
 } from 'precharts';
-import {
-  formatPrice,
-  getDateKey,
-  IStatsState
-} from '../../store/reducers/stats-reducer';
-import { TooltipContent } from '../TooltipContent/TooltipContent';
 import { IOrder } from '../../../../types/types';
+import { formatPrice, getDateKey, IStatsState } from '../../store/reducers/stats-reducer';
+import { TooltipContent } from '../TooltipContent/TooltipContent';
 
 export const MonthlyExpense = ({ stats }: { stats: IStatsState }) => {
   const data = stats.orders.map((stat) => ({
     displayDate: getDateKey(stat.date),
-    ...stat
+    ...stat,
   }));
   return (
     <div>
@@ -48,13 +44,11 @@ export const MonthlyExpense = ({ stats }: { stats: IStatsState }) => {
                       {columnData.payload.date.toLocaleDateString('he-IL', {
                         day: '2-digit',
                         weekday: 'long',
-                        month: '2-digit'
+                        month: '2-digit',
                       })}
                     </time>
                     {columnData.payload.total ? (
-                      <strong>
-                        סה״כ: {formatPrice(columnData.payload.total)}
-                      </strong>
+                      <strong>סה״כ: {formatPrice(columnData.payload.total)}</strong>
                     ) : null}
                   </TooltipContent>
                 );

@@ -15,19 +15,16 @@ const initialState: IStatsState = {
   toDate: getLastDayOfMonth(today),
   orders: [],
   coveredByCompany: 770,
-  totalExpense: 0
+  totalExpense: 0,
 };
 
-export function statsReducer(
-  state: IStatsState = initialState,
-  action: IAction
-) {
+export function statsReducer(state: IStatsState = initialState, action: IAction) {
   switch (action.type) {
     case StatsActions.SAVE_ORDERS:
       return {
         ...state,
         orders: calculateOrders(action.value, state),
-        totalExpense: calculateTotalExpense(action.value)
+        totalExpense: calculateTotalExpense(action.value),
       };
     case StatsActions.UPDATE_MONTH_BY:
       const newDate = new Date(
@@ -38,7 +35,7 @@ export function statsReducer(
       return {
         ...state,
         fromDate: getFirstDayOfMonth(newDate),
-        toDate: getLastDayOfMonth(newDate)
+        toDate: getLastDayOfMonth(newDate),
       };
     default:
       return state;
@@ -66,9 +63,7 @@ export function getDateKey(date) {
 }
 
 function calculateOrders(orders: IOrder[], state: IStatsState) {
-  const sortedOrders = orders.sort(
-    (d1, d2) => d1.date.getTime() - d2.date.getTime()
-  );
+  const sortedOrders = orders.sort((d1, d2) => d1.date.getTime() - d2.date.getTime());
   const accOrders: { [key: string]: IOrderDay } = {};
 
   for (let i = state.fromDate.getDate(); i < state.toDate.getDate(); i++) {
@@ -79,14 +74,12 @@ function calculateOrders(orders: IOrder[], state: IStatsState) {
     );
 
     const key = getDateKey(currentDate);
-    const dayOrders = sortedOrders.filter(
-      (order) => key === getDateKey(order.date)
-    );
+    const dayOrders = sortedOrders.filter((order) => key === getDateKey(order.date));
 
     accOrders[key] = {
       date: currentDate,
       orders: dayOrders,
-      total: dayOrders.reduce((total, { price }) => total + price, 0)
+      total: dayOrders.reduce((total, { price }) => total + price, 0),
     };
   }
 
@@ -96,6 +89,6 @@ function calculateOrders(orders: IOrder[], state: IStatsState) {
 export function formatPrice(price: number) {
   return price.toLocaleString('he-IL', {
     style: 'currency',
-    currency: 'ILS'
+    currency: 'ILS',
   });
 }

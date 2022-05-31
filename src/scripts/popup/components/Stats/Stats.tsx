@@ -1,4 +1,4 @@
-import { h, Component } from 'preact';
+import { Component, h } from 'preact';
 import { connect } from 'preact-redux';
 import { IAppState, IReduxProps, IUserDetails } from '../../../../types/types';
 import { changeMonthBy, getStats } from '../../store/actions/stats';
@@ -8,8 +8,7 @@ import { MonthNavigation } from '../MonthNavigation/MonthNavigation';
 
 interface IStatsProps extends IReduxProps, Partial<IAppState> {}
 
-@((connect as any)((s: IAppState) => s))
-export class Stats extends Component<IStatsProps> {
+class StatsInner extends Component<IStatsProps> {
   public componentDidMount() {
     const { user, stats, dispatch } = this.props;
     dispatch(getStats(stats.fromDate, stats.toDate, user as IUserDetails));
@@ -40,3 +39,5 @@ export class Stats extends Component<IStatsProps> {
     dispatch(changeMonthBy(1));
   };
 }
+
+export const Stats = connect((s: IAppState) => s)(StatsInner as any);

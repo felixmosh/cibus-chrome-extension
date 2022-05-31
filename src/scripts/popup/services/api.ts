@@ -1,5 +1,5 @@
-import { BASE_URL } from '../../constants/constants';
 import { IOrder, IUserDetails } from '../../../types/types';
+import { BASE_URL } from '../../constants/constants';
 
 interface ICibusResponse {
   code: number;
@@ -30,10 +30,7 @@ function convertCibusDateToDate(date: string): Date {
     .split(' ')
     .map((item, index) => {
       if (index === 0) {
-        return item
-          .split('/')
-          .reverse()
-          .join('-');
+        return item.split('/').reverse().join('-');
       }
       return item;
     })
@@ -51,13 +48,13 @@ class CibusApi {
     return this.post<ICibusLoginData>({
       user_login_name: username,
       user_login_pswd: password,
-      type: 'signin'
+      type: 'signin',
     }).then((response) => ({
       token: response.login_cookie_token,
       firstname: response.f_name,
       lastname: response.l_name,
       id: response.user_id,
-      company_id: response.company_id
+      company_id: response.company_id,
     }));
   }
 
@@ -70,18 +67,15 @@ class CibusApi {
       {
         from_date: convertToCibusDate(fromDate),
         to_date: convertToCibusDate(toDate),
-        type: 'prx_user_deals'
+        type: 'prx_user_deals',
       },
       userToken
     ).then((response) => ({
       orders: response.list.map((order) => ({
         date: convertCibusDateToDate(order.date),
         price: order.price,
-        restaurantName: order.rest_name
-          .split(' - ')
-          .reverse()
-          .pop()
-      }))
+        restaurantName: order.rest_name.split(' - ').reverse().pop(),
+      })),
     }));
   }
 
@@ -92,10 +86,10 @@ class CibusApi {
       ...(authToken
         ? {
             headers: new Headers({
-              Authorization: authToken
-            })
+              Authorization: authToken,
+            }),
           }
-        : {})
+        : {}),
     })
       .then((body) => body.json())
       .then((response) => {

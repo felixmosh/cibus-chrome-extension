@@ -31,5 +31,5 @@ function getItem<T>(key: string): Promise<T> {
 export const chromeService = {
   getCookie,
   getItem,
-  setItem
+  setItem,
 };

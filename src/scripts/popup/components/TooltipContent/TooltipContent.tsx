@@ -1,12 +1,12 @@
 import { h } from 'preact';
 import * as styles from './TooltipContent.scss';
-import * as classNames from 'classnames';
+import cn from 'clsx';
 
 export const TooltipContent = ({ children, withCaret }: any) => {
   return (
     <div
-      className={classNames(styles.tooltipContent, {
-        [styles.withCaret]: withCaret
+      className={cn(styles.tooltipContent, {
+        [styles.withCaret]: withCaret,
       })}
     >
       {children}

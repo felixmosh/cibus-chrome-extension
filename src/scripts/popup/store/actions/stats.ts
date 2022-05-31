@@ -3,20 +3,20 @@ import { cibusApi } from '../../services/api';
 
 export const StatsActions = {
   SAVE_ORDERS: 'save_orders',
-  UPDATE_MONTH_BY: 'update_month_by'
+  UPDATE_MONTH_BY: 'update_month_by',
 };
 
 function saveOrders(orders: IOrder[]) {
   return {
     type: StatsActions.SAVE_ORDERS,
-    value: orders
+    value: orders,
   };
 }
 
 function updateMonthBy(monthBias: number) {
   return {
     type: StatsActions.UPDATE_MONTH_BY,
-    value: monthBias
+    value: monthBias,
   };
 }
 
@@ -33,7 +33,7 @@ export function changeMonthBy(bias: number) {
     dispatch(updateMonthBy(bias));
     const {
       stats: { fromDate, toDate },
-      user
+      user,
     } = getState();
 
     getStats(fromDate, toDate, user)(dispatch);

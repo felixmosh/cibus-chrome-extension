@@ -1,5 +1,5 @@
+import cn from 'clsx';
 import { h } from 'preact';
-import * as classNames from 'classnames';
 import * as s from './Header.scss';
 
 export interface IHeaderProps {
@@ -10,7 +10,7 @@ export interface IHeaderProps {
 export const Header = ({ firstname = '', lastname = '' }: IHeaderProps) => {
   const fullname = `${firstname} ${lastname}`.trim();
   return (
-    <header className={classNames(s.header, { [s.hasName]: fullname })}>
+    <header className={cn(s.header, { [s.hasName]: fullname })}>
       {fullname && (
         <span>
           <svg
@@ -40,10 +40,7 @@ export const Header = ({ firstname = '', lastname = '' }: IHeaderProps) => {
                   d="M27.5 9.5h23M27.5 14.5h23M28.5 19.5h22M31.5 24.5h19"
                 />
                 <circle cx="18" cy="11" r="5.5" fill="#666" />
-                <path
-                  d="M6.5 29.5s1-13 11.92-13c9.08 0 11.08 13 11.08 13z"
-                  fill="#666"
-                />
+                <path d="M6.5 29.5s1-13 11.92-13c9.08 0 11.08 13 11.08 13z" fill="#666" />
               </g>
             </g>
           </svg>

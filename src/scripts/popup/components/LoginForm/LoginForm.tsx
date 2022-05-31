@@ -21,7 +21,7 @@ export class LoginForm extends Component<ILoginFormProps, ILoginFormState> {
       hasError: '',
       password: '',
       username: '',
-      isSubmitted: false
+      isSubmitted: false,
     };
 
     this.onSubmit = this.onSubmit.bind(this);
